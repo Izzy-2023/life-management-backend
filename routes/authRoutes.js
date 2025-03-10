@@ -7,7 +7,7 @@ const { sendVerificationEmail, sendResetPasswordEmail } = require('../utils/emai
 const router = express.Router();
 
 // Register
-router.post('/register', async (req, res) => {
+router.post('/auth/register', async (req, res) => {
     const { name, email, password } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -41,7 +41,7 @@ router.get('/verify/:token', async (req, res) => {
 });
 
 // Login
-router.post('/login', async (req, res) => {
+router.post('/auth/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
