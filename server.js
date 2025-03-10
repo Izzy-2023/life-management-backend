@@ -10,8 +10,6 @@ const journalRoutes = require('./routes/journalRoutes');
 const habitRoutes = require('./routes/habitRoutes');
 
 
-
-
 const app = express();
 
 // Middleware
@@ -20,9 +18,9 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/tasks', taskRoutes);
+app.use('api/tasks', taskRoutes);
 app.use('/api/journals', journalRoutes);
-app.use('/api/habits', habitRoutes);
+app.use('api/habits', habitRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
